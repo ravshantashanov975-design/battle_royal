@@ -424,29 +424,29 @@
         const joystickInnerP2 = document.getElementById('joystickInnerP2');
         const shootButtonP2 = document.getElementById('shootButtonP2');
 
-        if (joystickP1) {
-            joystickP1.addEventListener('touchstart', (e) => {
+    if (joystick) {
+            joystick.addEventListener('touchstart', (e) => {
                 e.preventDefault();
-                joystickP1Active = true;
-                const rect = joystickP1.getBoundingClientRect();
-                joystickP1Start.x = rect.left + rect.width / 2;
-                joystickP1Start.y = rect.top + rect.height / 2;
+                joystickActive = true;
+                const rect = joystick.getBoundingClientRect();
+                joystickStart.x = rect.left + rect.width / 2;
+                joystickStart.y = rect.top + rect.height / 2;
             });
 
-            joystickP1.addEventListener('touchmove', (e) => {
+            joystick.addEventListener('touchmove', (e) => {
                 e.preventDefault();
-                if (joystickP1Active) {
+                if (joystickActive) {
                     const touch = e.touches[0];
-                    joystickP1Current.x = touch.clientX;
-                    joystickP1Current.y = touch.clientY;
+                    joystickCurrent.x = touch.clientX;
+                    joystickCurrent.y = touch.clientY;
                     
-                    const dx = joystickP1Current.x - joystickP1Start.x;
-                    const dy = joystickP1Current.y - joystickP1Start.y;
+                    const dx = joystickCurrent.x - joystickStart.x;
+                    const dy = joystickCurrent.y - joystickStart.y;
                     const dist = Math.min(35, Math.sqrt(dx * dx + dy * dy));
                     const angle = Math.atan2(dy, dx);
                     
-                    joystickInnerP1.style.left = `calc(50% + ${Math.cos(angle) * dist}px)`;
-                    joystickInnerP1.style.top = `calc(50% + ${Math.sin(angle) * dist}px)`;
+                    joystickInner.style.left = `calc(50% + ${Math.cos(angle) * dist}px)`;
+                    joystickInner.style.top = `calc(50% + ${Math.sin(angle) * dist}px)`;
                 }
             });
 
@@ -1453,3 +1453,4 @@
             draw();
             requestAnimationFrame(gameLoop);
         }
+
