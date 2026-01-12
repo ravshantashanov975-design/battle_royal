@@ -1,0 +1,95 @@
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D Battle Royale</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/game.js" defer></script>
+</head>
+<body>
+    <div id="gameContainer">
+        <canvas id="gameCanvas"></canvas>
+        
+        <!-- Menu -->
+        <div id="menu">
+            <h1>🎮 BATTLE ROYALE</h1>
+            <button class="menu-btn" onclick="startGame(1)">1 PLAYER</button>
+            <button class="menu-btn" onclick="startGame(2)">2 PLAYER</button>
+            <button class="menu-btn" onclick="showSettings()">⚙️ SOZLAMALAR</button>
+        </div>
+
+        <!-- Sozlamalar -->
+        <div id="settings">
+            <h2>⚙️ SOZLAMALAR</h2>
+            
+            <div class="color-selector">
+                <h3>Player 1 Rangi</h3>
+                <div class="color-grid" id="colorGrid1"></div>
+            </div>
+
+            <div class="color-selector" id="player2ColorSelector" style="display:none;">
+                <h3>Player 2 Rangi</h3>
+                <div class="color-grid" id="colorGrid2"></div>
+            </div>
+
+            <button class="back-btn" onclick="hideSettings()">⬅️ Orqaga</button>
+        </div>
+
+        <!-- O'yin UI -->
+        <div id="gameUI">
+            <button id="pauseBtn" onclick="togglePause()">⏸</button>
+            
+            <div id="stats">
+                <div>💚 Jon: <span id="health">10000</span></div>
+                <div>💀 O'ldirilganlar: <span id="kills">0</span></div>
+            </div>
+
+            <div id="stats2">
+                <div>💚 Jon: <span id="health2">10000</span></div>
+                <div>💀 O'ldirilganlar: <span id="kills2">0</span></div>
+            </div>
+            
+            <div id="weaponInfo">🔪 Pichoq</div>
+            <div id="weaponInfo2">🔪 Pichoq</div>
+            
+            <div id="aliveCount">Tiriklar: <span id="alive">50</span></div>
+
+            <!-- Pause Menu -->
+            <div id="pauseMenu">
+                <h2>⏸ PAUZA</h2>
+                <button id="resumeBtn" class="pause-btn">Davom etish</button>
+                <button id="menuBtnPause" class="pause-btn">Menuga qaytish</button>
+            </div>
+
+            <!-- 1 Player mobile controls -->
+            <div id="mobileControls">
+                <div class="joystick">
+                    <div class="joystick-inner" id="joystickInner"></div>
+                </div>
+                <button id="shootButton">O'Q</button>
+            </div>
+
+            <!-- 2 Player mobile controls -->
+            <div id="mobileControls2P">
+                <div class="joystick-p1">
+                    <div class="joystick-inner" id="joystickInnerP1"></div>
+                </div>
+                <button id="shootButtonP1">O'Q</button>
+                
+                <div class="joystick-p2">
+                    <div class="joystick-inner" id="joystickInnerP2"></div>
+                </div>
+                <button id="shootButtonP2">O'Q</button>
+            </div>
+
+            <!-- Game Over -->
+            <div id="gameOver">
+                <h1 id="resultText">O'YIN TUGADI</h1>
+                <p id="winnerText"></p>
+                <p>Player 1 o'ldirilganlar: <span id="finalKills1">0</span></p>
+                <p id="finalKills2Text" style="display:none;">Player 2 o'ldirilganlar: <span id="finalKills2">0</span></p>
+                <button id="restartBtn">Qayta o'ynash</button>
+                <button id="menuBtn">Menuga qaytish</button>
+            </div>
+        </div>
+    </div>
